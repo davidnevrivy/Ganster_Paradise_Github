@@ -1,0 +1,39 @@
+{
+  "startMoney": 300000, "startGrows": 1, "startCards": 3, "estatesPerPlayer": 5,
+  "income": 500000, "regionLordBonus": 100000, "incomeCards": 2, "handLimit": 7,
+  "costs": {
+    "buyBase": 500000, "sow": 500000, "check": 200000, "denounce": 200000, "buyCards": 200000, "bribe": 300000,
+    "raidFine": 300000, "offerPay": 500000, "offerRefuse": 300000, "kompro": 300000, "debt": 200000,
+    "blackMarketPerGrow": 200000, "harvestPerGrow": 100000
+  },
+  "investigation": { "max": 36, "sow": 1, "sowMaxPerTurn": 1, "denounce": 1, "endOfRound": 1, "raidDrop": 0, "autoRaidFrom": 10, "autoRaids": 1 },
+  "abilities": {
+    "pestitelSow": 400000, "pestitelQuiet": true, "pestitelAutoRaidImmune": true,
+    "dedicBuyDiscount": 100000,
+    "hrabeCheck": 0, "hrabeInformant": 3, "vymahacIncome": 100000, "vymahacAuctionBonus": 100000,
+    "celnikBribe": 0, "celnikMinBid": 100000, "investorDiscountNormalLord": 100000
+  },
+  "roles": {
+    "3": { "police": 1, "lords": 2, "investor": 1, "setAside": 1 },
+    "4": { "police": 2, "lords": 3, "investor": 1, "setAside": 2 },
+    "5": { "police": 2, "lords": 3, "investor": 1, "setAside": 1 },
+    "6": { "police": 3, "lords": 3, "investor": 1, "setAside": 1 }
+  },
+  "byPlayers": {
+    "3": { "regions": ["Jih", "Midlands", "Wales"], "neutralGrows": 10, "invStart": 3, "G": 8, "E": 10, "TH": 28, "K": 3, "IE": 13, "IG": 4 },
+    "4": { "regions": ["Jih", "Midlands", "Wales", "Sever"], "neutralGrows": 11, "invStart": 0, "G": 8, "E": 10, "TH": 30, "K": 3, "IE": 14, "IG": 5 },
+    "5": { "regions": "all", "neutralGrows": 13, "invStart": 0, "G": 8, "E": 10, "TH": 34, "K": 4, "IE": 14, "IG": 5 },
+    "6": { "regions": "all", "neutralGrows": 15, "invStart": 0, "G": 8, "E": 9, "TH": 34, "K": 4, "IE": 12, "IG": 6 }
+  },
+  "timers": { "negotiationSec": 120, "turnSec": 90, "reactionSec": 15, "auctionSec": 20, "offerSec": 60 },
+  "lordDeck": {
+    "normal":   { "count": 6, "cost": 500000, "delta": 0 },
+    "indebted": { "count": 2, "cost": 300000, "delta": -200000 },
+    "greedy":   { "count": 2, "cost": 700000, "delta": 200000 },
+    "gossip":   { "count": 1, "cost": 500000, "delta": 0 },
+    "dispute":  { "count": 1, "cost": 0, "delta": null }
+  },
+  "actionDeck": { "informator": 8, "uplatek": 7, "razie": 6, "nabidka": 6, "falesna": 5, "cerny": 5, "pravnik": 4, "dedicke": 4, "kompro": 4, "presun": 4 },
+  "eventDeck": { "pozornost": 2, "bulvar": 2, "plisen": 1, "sklizen": 1, "klid": 1, "dluh": 1 },
+  "maxRounds": 30
+}

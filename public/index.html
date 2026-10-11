@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Gangster Paradise</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- ============== INTRO ============== -->
+<div id="screen-intro" class="screen">
+  <div class="card-box">
+    <h1>Gangster Paradise</h1>
+    <p class="subtitle" data-t="intro.subtitle"></p>
+
+    <div class="tabs">
+      <button id="tab-create" class="active" data-t="intro.createRoom"></button>
+      <button id="tab-join" data-t="intro.joinRoom"></button>
+    </div>
+
+    <div id="pane-create">
+      <div class="field">
+        <label data-t="intro.nickLabel"></label>
+        <input id="create-nick" maxlength="24" data-t-placeholder="intro.nickPlaceholder" />
+      </div>
+      <button id="btn-create" data-t="intro.createRoom"></button>
+    </div>
+
+    <div id="pane-join" class="hidden">
+      <div class="field">
+        <label data-t="intro.codeLabel"></label>
+        <input id="join-code" maxlength="6" style="text-transform:uppercase" data-t-placeholder="intro.codePlaceholder" />
+      </div>
+      <div class="field">
+        <label data-t="intro.nickLabel"></label>
+        <input id="join-nick" maxlength="24" data-t-placeholder="intro.nickPlaceholder" />
+      </div>
+      <button id="btn-join" data-t="intro.joinRoom"></button>
+    </div>
+
+    <p id="intro-error" style="color:#8a2e2e; font-weight:600;"></p>
+  </div>
+</div>
+
+<!-- ============== LOBBY ============== -->
+<div id="screen-lobby" class="screen hidden">
+  <div class="card-box">
+    <h2 data-t="lobby.title"></h2>
+    <p data-t="lobby.shareHint"></p>
+    <div class="code-display" id="lobby-code">—</div>
+    <div class="row">
+      <button id="btn-copy-link" class="secondary" data-t="lobby.copyLink"></button>
+    </div>
+    <h3 data-t="lobby.players" style="margin-top:18px;"></h3>
+    <div id="lobby-players"></div>
+    <p class="dim" id="lobby-status" data-t="lobby.waiting"></p>
+    <button id="btn-start" data-t="lobby.start" disabled></button>
+    <details style="margin-top:14px;">
+      <summary data-t="lobby.rules" style="cursor:pointer; font-weight:600;"></summary>
+      <p class="dim" data-t="lobby.rulesText" style="margin-top:6px;"></p>
+    </details>
+  </div>
+</div>
+
+<!-- ============== GAME ============== -->
+<div id="screen-game">
+  <div class="topbar">
+    <div class="pill"><span data-t="top.round"></span>&nbsp;<b id="top-round">1</b></div>
+    <div class="pill" id="top-phase">—</div>
+    <div class="pill" id="top-timer-wrap"><span data-t="top.timeLeft"></span>&nbsp;<b class="timer-badge" id="top-timer">—</b></div>
+    <div class="pill">
+      <span data-t="top.investigation"></span>
+      <div class="inv-gauge"><div class="fill" id="inv-fill" style="width:0%"></div><div class="mark" id="inv-mark-auto" style="left:27%"></div><div class="mark" id="inv-mark-th" style="left:80%"></div></div>
+      <b id="inv-value">0</b>/36
+    </div>
+    <div class="pill" id="top-event" data-t="top.noEvent"></div>
+    <div class="spacer"></div>
+    <div class="pill" id="top-turn"></div>
+  </div>
+
+  <div class="main-layout">
+    <div class="panel side-col" id="players-panel">
+      <h3 data-t="players.title"></h3>
+      <div id="players-list"></div>
+      <div id="negotiation-box" class="hidden" style="margin-top:10px;">
+        <p class="dim" data-t="top.negotiation"></p>
+        <button id="btn-ready" data-t="top.ready"></button>
+        <p class="dim" id="negotiation-status"></p>
+      </div>
+    </div>
+
+    <div class="panel map-col">
+      <h3 data-t="map.title"></h3>
+      <div class="map-wrap">
+        <svg id="map-svg" viewBox="0 0 760 1140" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <div id="map-tooltip" class="dim" style="min-height:1.4em; margin-top:6px;"></div>
+    </div>
+
+    <div class="me-col" style="display:flex; flex-direction:column; gap:10px;">
+      <div class="panel">
+        <h3 data-t="panel.myCharacter"></h3>
+        <div id="my-character"></div>
+        <div class="goal-progress">
+          <span data-t="panel.progress"></span>: <span id="my-goal-text"></span>
+          <div class="bar"><div class="fill" id="my-goal-fill" style="width:0%"></div></div>
+        </div>
+        <p><span data-t="panel.money"></span>: <b id="my-money">0 £</b></p>
+      </div>
+
+      <div class="panel">
+        <h3 data-t="panel.hand"></h3>
+        <div class="hand" id="my-hand"></div>
+        <div class="actions-grid" id="actions-grid"></div>
+        <p class="dim" id="action-hint"></p>
+      </div>
+
+      <div class="panel">
+        <h3 data-t="offers.title"></h3>
+        <button id="btn-new-offer" class="secondary" data-t="offers.new"></button>
+        <div id="offers-list" style="margin-top:8px;"></div>
+      </div>
+
+      <div class="panel">
+        <h3 data-t="log.title"></h3>
+        <div class="log-list" id="log-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="credit">Gangster Paradise — online MVP</footer>
+</div>
+
+<!-- ============== GAME OVER ============== -->
+<div id="screen-gameover" class="screen hidden">
+  <div class="card-box" style="max-width:640px;">
+    <h2 data-t="gameOver.title"></h2>
+    <p id="gameover-winner" style="font-size:1.2em; font-weight:600;"></p>
+    <h3 data-t="gameOver.reveal"></h3>
+    <div id="gameover-reveal"></div>
+    <h3 data-t="gameOver.setAside"></h3>
+    <div id="gameover-setaside"></div>
+  </div>
+</div>
+
+<div class="toast-container" id="toasts"></div>
+<div id="modal-root"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "gangster-paradise",
+  "version": "1.0.0",
+  "description": "Gangster Paradise - online multiplayer implementation",
+  "private": true,
+  "type": "commonjs",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test tests/",
+    "sim": "node scripts/simulate.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "nanoid": "^3.3.8",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.1"
+  }
+}
