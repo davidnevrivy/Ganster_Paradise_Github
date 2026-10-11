@@ -13,7 +13,7 @@ function randomCode(len = 5) {
 }
 
 class Room {
-  constructor(code, hostNick) {
+  constructor(code, hostNick, targetPlayers) {
     this.code = code;
     this.id = code;
     this.seed = makeSeed();
@@ -22,6 +22,13 @@ class Room {
     this.game = null; // created on start
     this.createdAt = Date.now();
     this.tickInterval = null;
+    // How many players the host declared up front when creating the room
+    // (chosen at creation time, shown in the lobby, enforced on join/start).
+    // `null` means "not specified" — falls back to the old flexible 3-6
+    // range, which only matters for internal tooling/tests that create a
+    // room without going through the lobby UI (the UI always sends a value).
+    const n = Number(targetPlayers);
+    this.targetPlayers = Number.isInteger(n) && n >= 3 && n <= 6 ? n : null;
   }
 
   addPlayer(nick) {
@@ -36,7 +43,12 @@ class Room {
     return this.players.find((p) => p.token === token);
   }
 
+  isFull() {
+    return this.players.length >= (this.targetPlayers || 6);
+  }
+
   canStart() {
+    if (this.targetPlayers) return this.players.length === this.targetPlayers;
     return this.players.length >= 3 && this.players.length <= 6;
   }
 
@@ -65,12 +77,12 @@ class RoomManager {
     this.rooms = new Map();
   }
 
-  createRoom(hostNick) {
+  createRoom(hostNick, targetPlayers) {
     let code;
     do {
       code = randomCode();
     } while (this.rooms.has(code));
-    const room = new Room(code, hostNick);
+    const room = new Room(code, hostNick, targetPlayers);
     this.rooms.set(code, room);
     return room;
   }

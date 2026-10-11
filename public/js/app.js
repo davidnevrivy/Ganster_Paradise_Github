@@ -147,7 +147,8 @@ function wireIntroScreen() {
 
   document.getElementById('btn-create').onclick = async () => {
     const nick = document.getElementById('create-nick').value.trim();
-    const ack = await emit('room:create', { nick });
+    const targetPlayers = Number(document.getElementById('create-player-count').value);
+    const ack = await emit('room:create', { nick, targetPlayers });
     if (!ack.ok) return showIntroError(ack.error);
     IDENTITY = { code: ack.code, playerId: ack.playerId, token: ack.token, nick };
     saveIdentity(IDENTITY);
@@ -169,7 +170,7 @@ function showIntroError(code) {
   const map = {
     ROOM_NOT_FOUND: 'Místnost s tímto kódem neexistuje.',
     GAME_ALREADY_STARTED: 'Hra v této místnosti už běží.',
-    ROOM_FULL: 'Místnost je plná (max 6 hráčů).',
+    ROOM_FULL: t('lobby.roomFullNotStarted'),
   };
   document.getElementById('intro-error').textContent = map[code] || code || 'Něco se nepovedlo.';
 }
@@ -196,14 +197,15 @@ socket.on('room:update', (payload) => {
   payload.players.forEach((p) => {
     const row = document.createElement('div');
     row.className = 'player-chip';
-    row.innerHTML = `<span>${escapeHtml(p.nick)}</span>${p.id === payload.you ? ` <span class="dim">(${t('lobby.title') && 'ty'})</span>` : ''}${!p.connected ? ' <span class="dim">(odpojen)</span>' : ''}`;
+    row.innerHTML = `<span>${escapeHtml(p.nick)}</span>${p.id === payload.you ? ' <span class="dim">(ty)</span>' : ''}${!p.connected ? ' <span class="dim">(odpojen)</span>' : ''}`;
     list.appendChild(row);
   });
+  document.querySelector('[data-t="lobby.players"]').textContent = `${t('lobby.players')} (${payload.players.length}/${payload.targetPlayers})`;
   const startBtn = document.getElementById('btn-start');
   startBtn.disabled = !(payload.isHost && payload.canStart);
   document.getElementById('lobby-status').textContent = payload.canStart
-    ? (payload.isHost ? '' : t('lobby.onlyHost'))
-    : t('lobby.needMore');
+    ? (payload.isHost ? '' : t('lobby.readyToStart'))
+    : t('lobby.waitingFor', { joined: payload.players.length, target: payload.targetPlayers });
   if (payload.started) showScreen('screen-game');
   else showScreen('screen-lobby');
 });

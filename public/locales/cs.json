@@ -1,5 +1,7 @@
 {
-  "app": { "title": "Gangster Paradise" },
+  "app": {
+    "title": "Gangster Paradise"
+  },
   "intro": {
     "subtitle": "Britské podsvětí. Tajné pěstírny. Nikdo neví, komu věřit.",
     "nickLabel": "Přezdívka",
@@ -8,7 +10,8 @@
     "joinRoom": "Připojit se",
     "codeLabel": "Kód místnosti",
     "codePlaceholder": "např. XJ4K9",
-    "reconnecting": "Připojuji se zpět do rozehrané hry…"
+    "reconnecting": "Připojuji se zpět do rozehrané hry…",
+    "playerCountLabel": "Počet hráčů"
   },
   "lobby": {
     "title": "Místnost",
@@ -16,30 +19,55 @@
     "players": "Hráči",
     "waiting": "Čeká se na hráče (3–6)…",
     "start": "Spustit hru",
-    "onlyHost": "Spustit může jen hostitel.",
-    "needMore": "Potřeba 3–6 hráčů.",
     "copyLink": "Kopírovat odkaz",
     "copied": "Zkopírováno!",
     "rules": "Pravidla ve zkratce",
-    "rulesText": "Vyhrává, kdo na konci svého tahu splní cíl své strany. Postava je tajná. Tah = 1 karta zdarma + 2 akce. Žádný hlasový hovor — vše řeší obchody a karty."
+    "rulesText": "Vyhrává, kdo na konci svého tahu splní cíl své strany. Postava je tajná. Tah = 1 karta zdarma + 2 akce. Žádný hlasový hovor — vše řeší obchody a karty.",
+    "waitingFor": "Čeká se na hráče ({joined}/{target})…",
+    "readyToStart": "Všichni hráči jsou tu — hostitel může spustit hru.",
+    "roomFullNotStarted": "Místnost je plná."
   },
   "phases": {
-    "LOBBY": "Lobby", "SETUP": "Příprava", "ROUND_EVENT": "Událost",
-    "ROUND_INCOME": "Příjem", "NEGOTIATION": "Vyjednávání", "TURNS": "Tahy",
-    "ROUND_END": "Konec kola", "GAME_OVER": "Konec hry"
+    "LOBBY": "Lobby",
+    "SETUP": "Příprava",
+    "ROUND_EVENT": "Událost",
+    "ROUND_INCOME": "Příjem",
+    "NEGOTIATION": "Vyjednávání",
+    "TURNS": "Tahy",
+    "ROUND_END": "Konec kola",
+    "GAME_OVER": "Konec hry"
   },
-  "sides": { "lords": "Gangsterští lordi", "police": "Zkorumpovaná policie", "renegade": "Investor (odpadlík)" },
+  "sides": {
+    "lords": "Gangsterští lordi",
+    "police": "Zkorumpovaná policie",
+    "renegade": "Investor (odpadlík)"
+  },
   "top": {
-    "round": "Kolo", "investigation": "Vyšetřování", "event": "Událost", "noEvent": "—",
-    "turnOf": "Na tahu:", "yourTurn": "Jsi na tahu!", "actionsLeft": "Zbývá akcí",
-    "timeLeft": "Zbývá", "negotiation": "Vyjednávání — domluvte se, než začnou tahy.",
-    "ready": "Hotovo", "readyWaiting": "Čeká se na ostatní…"
+    "round": "Kolo",
+    "investigation": "Vyšetřování",
+    "event": "Událost",
+    "noEvent": "—",
+    "turnOf": "Na tahu:",
+    "yourTurn": "Jsi na tahu!",
+    "actionsLeft": "Zbývá akcí",
+    "timeLeft": "Zbývá",
+    "negotiation": "Vyjednávání — domluvte se, než začnou tahy.",
+    "ready": "Hotovo",
+    "readyWaiting": "Čeká se na ostatní…"
   },
   "panel": {
-    "myCharacter": "Moje postava", "ability": "Schopnost", "weakness": "Slabina",
-    "goal": "Cíl", "money": "Peníze", "hand": "Ruka karet", "estates": "Panství",
-    "grows": "Pěstírny", "progress": "Postup k cíli", "referenceCard": "Karta přehledu",
-    "notes": "Osobní zápisník", "notesHint": "Jen ty je vidíš. Ukládá se v tomto prohlížeči.",
+    "myCharacter": "Moje postava",
+    "ability": "Schopnost",
+    "weakness": "Slabina",
+    "goal": "Cíl",
+    "money": "Peníze",
+    "hand": "Ruka karet",
+    "estates": "Panství",
+    "grows": "Pěstírny",
+    "progress": "Postup k cíli",
+    "referenceCard": "Karta přehledu",
+    "notes": "Osobní zápisník",
+    "notesHint": "Jen ty je vidíš. Ukládá se v tomto prohlížeči.",
     "characterGuessLabel": "Tip na postavu"
   },
   "goals": {
@@ -48,81 +76,217 @@
     "renegade": "panství ≥ {IE} a pěstírny ≥ {IG}"
   },
   "actions": {
-    "draw_card": "Táhni kartu", "buy_cards": "Kup karty", "buy_estate": "Kup panství",
-    "sow": "Zasej", "check": "Prověř", "denounce": "Udání", "play_card": "Zahraj kartu",
-    "chooseTarget": "Vyber cíl na mapě", "confirm": "Potvrdit", "cancel": "Zrušit",
-    "pickEstate": "Klikni na panství na mapě", "pickOwnEmpty": "Vyber své panství s prázdným sklepem",
-    "pickOtherEstate": "Vyber panství jiného hráče", "pickOwnWithGrow": "Vyber své panství s pěstírnou",
-    "pickTwoOwn": "Vyber dvě svá panství", "pickPlayer": "Vyber hráče", "pickUpToN": "Vyber až {n} panství"
+    "draw_card": "Táhni kartu",
+    "buy_cards": "Kup karty",
+    "buy_estate": "Kup panství",
+    "sow": "Zasej",
+    "check": "Prověř",
+    "denounce": "Udání",
+    "play_card": "Zahraj kartu",
+    "chooseTarget": "Vyber cíl na mapě",
+    "confirm": "Potvrdit",
+    "cancel": "Zrušit",
+    "pickEstate": "Klikni na panství na mapě",
+    "pickOwnEmpty": "Vyber své panství s prázdným sklepem",
+    "pickOtherEstate": "Vyber panství jiného hráče",
+    "pickOwnWithGrow": "Vyber své panství s pěstírnou",
+    "pickTwoOwn": "Vyber dvě svá panství",
+    "pickPlayer": "Vyber hráče",
+    "pickUpToN": "Vyber až {n} panství"
   },
   "cards": {
-    "informator": { "name": "Informátor", "desc": "Tajně si prohlédni žetony 2 panství (Hrabě 3)." },
-    "uplatek": { "name": "Úplatek", "desc": "Zruší razii na tvém panství (300 000 £, Celník 0 £)." },
-    "razie": { "name": "Razie", "desc": "Zahaj razii na libovolném panství ve hře." },
-    "nabidka": { "name": "Nepřátelská nabídka", "desc": "Nabídni 500 000 £ za panství jiného hráče — může odmítnout za 300 000 £." },
-    "falesna": { "name": "Falešná stopa", "desc": "Přesměruj razii na panství jiného hráče." },
-    "cerny": { "name": "Černý trh", "desc": "Zruš vlastní pěstírnu a získej 200 000 £." },
-    "pravnik": { "name": "Právník", "desc": "Zruší kartu zahranou proti tobě (Nabídka, Dědické řízení, Kompro)." },
-    "kompro": { "name": "Kompromitující materiál", "desc": "Cíl ti dá 2 karty, nebo zaplatí 300 000 £ (Hrabě vždy peníze)." },
-    "presun": { "name": "Přesun úrody", "desc": "Prohoď žetony mezi dvěma svými panstvími (Pěstitel nesmí)." },
-    "dedicke": { "name": "Dědické řízení", "desc": "Zapečetěná dražba o panství jiného hráče — jen vy dva." }
+    "informator": {
+      "name": "Informátor",
+      "desc": "Tajně si prohlédni žetony 2 panství (Hrabě 3)."
+    },
+    "uplatek": {
+      "name": "Úplatek",
+      "desc": "Zruší razii na tvém panství (300 000 £, Celník 0 £)."
+    },
+    "razie": {
+      "name": "Razie",
+      "desc": "Zahaj razii na libovolném panství ve hře."
+    },
+    "nabidka": {
+      "name": "Nepřátelská nabídka",
+      "desc": "Nabídni 500 000 £ za panství jiného hráče — může odmítnout za 300 000 £."
+    },
+    "falesna": {
+      "name": "Falešná stopa",
+      "desc": "Přesměruj razii na panství jiného hráče."
+    },
+    "cerny": {
+      "name": "Černý trh",
+      "desc": "Zruš vlastní pěstírnu a získej 200 000 £."
+    },
+    "pravnik": {
+      "name": "Právník",
+      "desc": "Zruší kartu zahranou proti tobě (Nabídka, Dědické řízení, Kompro)."
+    },
+    "kompro": {
+      "name": "Kompromitující materiál",
+      "desc": "Cíl ti dá 2 karty, nebo zaplatí 300 000 £ (Hrabě vždy peníze)."
+    },
+    "presun": {
+      "name": "Přesun úrody",
+      "desc": "Prohoď žetony mezi dvěma svými panstvími (Pěstitel nesmí)."
+    },
+    "dedicke": {
+      "name": "Dědické řízení",
+      "desc": "Zapečetěná dražba o panství jiného hráče — jen vy dva."
+    }
   },
   "events": {
-    "pozornost": { "name": "Zvýšená pozornost policie", "desc": "Vyšetřování +2." },
-    "bulvar": { "name": "Bulvár", "desc": "Žeton náhodného panství se odhalí všem." },
-    "plisen": { "name": "Plíseň", "desc": "Pěstírna na náhodném panství zničena, bez pokuty a dražby." },
-    "sklizen": { "name": "Dobrá sklizeň", "desc": "Příjem +100 000 £ za každou tvou pěstírnu (tajně)." },
-    "klid": { "name": "Klidné kolo", "desc": "Vyšetřování −2." },
-    "dluh": { "name": "Dluh u bookmakera", "desc": "Každý zaplatí 200 000 £, nebo vrátí jedno panství." }
+    "pozornost": {
+      "name": "Zvýšená pozornost policie",
+      "desc": "Vyšetřování +2."
+    },
+    "bulvar": {
+      "name": "Bulvár",
+      "desc": "Žeton náhodného panství se odhalí všem."
+    },
+    "plisen": {
+      "name": "Plíseň",
+      "desc": "Pěstírna na náhodném panství zničena, bez pokuty a dražby."
+    },
+    "sklizen": {
+      "name": "Dobrá sklizeň",
+      "desc": "Příjem +100 000 £ za každou tvou pěstírnu (tajně)."
+    },
+    "klid": {
+      "name": "Klidné kolo",
+      "desc": "Vyšetřování −2."
+    },
+    "dluh": {
+      "name": "Dluh u bookmakera",
+      "desc": "Každý zaplatí 200 000 £, nebo vrátí jedno panství."
+    }
   },
   "lords": {
-    "normal": "Obyčejný lord", "indebted": "Zadlužený lord", "greedy": "Chamtivá lady",
-    "gossip": "Drbna", "dispute": "Lord ve sporu"
+    "normal": "Obyčejný lord",
+    "indebted": "Zadlužený lord",
+    "greedy": "Chamtivá lady",
+    "gossip": "Drbna",
+    "dispute": "Lord ve sporu"
   },
   "characters": {
-    "pestitel": { "name": "Lord Edmund Ashcombe, Pěstitel" },
-    "dedic": { "name": "Rupert Wexley, Mladý dědic" },
-    "hrabe": { "name": "Hrabě Percival Greaves" },
-    "inspektor": { "name": "Inspektor Alastair Crane" },
-    "vymahac": { "name": "Declan Rourke, Vymahač" },
-    "celnik": { "name": "Sid Barlow, Celník" },
-    "investor": { "name": "Conrad Vance, Investor" }
+    "pestitel": {
+      "name": "Lord Edmund Ashcombe, Pěstitel"
+    },
+    "dedic": {
+      "name": "Rupert Wexley, Mladý dědic"
+    },
+    "hrabe": {
+      "name": "Hrabě Percival Greaves"
+    },
+    "inspektor": {
+      "name": "Inspektor Alastair Crane"
+    },
+    "vymahac": {
+      "name": "Declan Rourke, Vymahač"
+    },
+    "celnik": {
+      "name": "Sid Barlow, Celník"
+    },
+    "investor": {
+      "name": "Conrad Vance, Investor"
+    }
   },
   "reaction": {
-    "raidTitle": "Razie!", "raidOn": "Razie na panství: {name}",
-    "bribe": "Úplatek", "falseLead": "Falešná stopa", "pass": "Nereagovat",
-    "hostileTitle": "Nepřátelská nabídka", "hostileOn": "{attacker} nabízí 500 000 £ za {estate}.",
-    "accept": "Přijmout", "refuse": "Odmítnout za 300 000 £", "lawyer": "Právník",
-    "komproTitle": "Kompromitující materiál", "komproOn": "{attacker} tě vydírá.",
-    "payMoney": "Zaplatit 300 000 £", "giveCards": "Dát 2 karty",
-    "dedickeTitle": "Dědické řízení", "dedickeOn": "{attacker} zahájil dědické řízení o {estate}.",
+    "raidTitle": "Razie!",
+    "raidOn": "Razie na panství: {name}",
+    "bribe": "Úplatek",
+    "falseLead": "Falešná stopa",
+    "pass": "Nereagovat",
+    "hostileTitle": "Nepřátelská nabídka",
+    "hostileOn": "{attacker} nabízí 500 000 £ za {estate}.",
+    "accept": "Přijmout",
+    "refuse": "Odmítnout za 300 000 £",
+    "lawyer": "Právník",
+    "komproTitle": "Kompromitující materiál",
+    "komproOn": "{attacker} tě vydírá.",
+    "payMoney": "Zaplatit 300 000 £",
+    "giveCards": "Dát 2 karty",
+    "dedickeTitle": "Dědické řízení",
+    "dedickeOn": "{attacker} zahájil dědické řízení o {estate}.",
     "proceedToAuction": "Nechat rozhodnout dražbu"
   },
   "auction": {
-    "seizureTitle": "Dražba — zabavené panství", "successionTitle": "Dědické řízení — dražba",
-    "bidLabel": "Tvá tajná nabídka", "submit": "Odeslat nabídku", "submitted": "Nabídka odeslána.",
-    "waitingOthers": "Čeká se na ostatní…", "revealed": "Nabídky odhaleny",
+    "seizureTitle": "Dražba — zabavené panství",
+    "successionTitle": "Dědické řízení — dražba",
+    "bidLabel": "Tvá tajná nabídka",
+    "submit": "Odeslat nabídku",
+    "submitted": "Nabídka odeslána.",
+    "waitingOthers": "Čeká se na ostatní…",
+    "revealed": "Nabídky odhaleny",
     "celnikMin": "Jako Celník musíš nabídnout aspoň 100 000 £, máš-li je."
   },
   "lordPurchase": {
-    "title": "Koupě panství", "drew": "Otočená karta lorda:", "price": "Cena",
-    "buy": "Koupit", "decline": "Nekoupit"
+    "title": "Koupě panství",
+    "drew": "Otočená karta lorda:",
+    "price": "Cena",
+    "buy": "Koupit",
+    "decline": "Nekoupit"
   },
-  "discard": { "title": "Překročen limit ruky (7)", "pick": "Vyber kartu/karty k odhození ({need})" },
-  "debt": { "title": "Dluh u bookmakera", "cantPay": "Nemáš 200 000 £. Vyber panství, které vrátíš.", "return": "Vrátit panství" },
+  "discard": {
+    "title": "Překročen limit ruky (7)",
+    "pick": "Vyber kartu/karty k odhození ({need})"
+  },
+  "debt": {
+    "title": "Dluh u bookmakera",
+    "cantPay": "Nemáš 200 000 £. Vyber panství, které vrátíš.",
+    "return": "Vrátit panství"
+  },
   "offers": {
-    "title": "Obchody", "new": "Nová nabídka", "to": "Komu", "give": "Dáváš", "want": "Chceš",
-    "money": "Peníze", "cards": "Karty", "estates": "Panství", "reveal": "Ukázat žeton panství",
-    "message": "Vzkaz (max 140 znaků)", "send": "Odeslat", "open": "Otevřené nabídky",
-    "accept": "Přijmout", "reject": "Odmítnout", "counter": "Protinávrh", "hiddenOffer": "nabídka mezi {from} a {to}",
-    "status_open": "čeká", "status_accepted": "přijato", "status_rejected": "odmítnuto", "status_countered": "protinávrh"
+    "title": "Obchody",
+    "new": "Nová nabídka",
+    "to": "Komu",
+    "give": "Dáváš",
+    "want": "Chceš",
+    "money": "Peníze",
+    "cards": "Karty",
+    "estates": "Panství",
+    "reveal": "Ukázat žeton panství",
+    "message": "Vzkaz (max 140 znaků)",
+    "send": "Odeslat",
+    "open": "Otevřené nabídky",
+    "accept": "Přijmout",
+    "reject": "Odmítnout",
+    "counter": "Protinávrh",
+    "hiddenOffer": "nabídka mezi {from} a {to}",
+    "status_open": "čeká",
+    "status_accepted": "přijato",
+    "status_rejected": "odmítnuto",
+    "status_countered": "protinávrh"
   },
-  "log": { "title": "Záznam hry" },
-  "map": { "title": "Mapa Velké Británie", "owner": "Vlastník", "neutral": "Neutrální", "grow": "Pěstírna", "empty": "Prázdný sklep", "unknown": "Neznámo", "stale": "mohlo se změnit od kola {round}" },
-  "players": { "title": "Hráči", "you": "(ty)", "disconnected": "odpojen" },
+  "log": {
+    "title": "Záznam hry"
+  },
+  "map": {
+    "title": "Mapa Velké Británie",
+    "owner": "Vlastník",
+    "neutral": "Neutrální",
+    "grow": "Pěstírna",
+    "empty": "Prázdný sklep",
+    "unknown": "Neznámo",
+    "stale": "mohlo se změnit od kola {round}"
+  },
+  "players": {
+    "title": "Hráči",
+    "you": "(ty)",
+    "disconnected": "odpojen"
+  },
   "gameOver": {
-    "title": "Konec hry!", "winnerIs": "{nick} vyhrává jako {character} ({side})!",
-    "reveal": "Odhalení", "setAside": "Karty stranou (nehrané postavy)"
+    "title": "Konec hry!",
+    "winnerIs": "{nick} vyhrává jako {character} ({side})!",
+    "reveal": "Odhalení",
+    "setAside": "Karty stranou (nehrané postavy)"
   },
-  "common": { "czk": "£", "close": "Zavřít", "yes": "Ano", "no": "Ne", "unknown": "?" }
+  "common": {
+    "czk": "£",
+    "close": "Zavřít",
+    "yes": "Ano",
+    "no": "Ne",
+    "unknown": "?"
+  }
 }

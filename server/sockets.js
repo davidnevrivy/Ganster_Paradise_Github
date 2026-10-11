@@ -9,6 +9,7 @@ function broadcastLobby(io, room) {
   const payload = {
     code: room.code,
     players: room.players.map((p) => ({ id: p.id, nick: p.nick, connected: p.connected })),
+    targetPlayers: room.targetPlayers,
     canStart: room.canStart(),
     started: !!room.game,
   };
@@ -52,15 +53,15 @@ function attachSocketHandlers(io, roomManager) {
     socket.data.roomCode = null;
     socket.data.playerId = null;
 
-    socket.on('room:create', ({ nick }, cb) => {
+    socket.on('room:create', ({ nick, targetPlayers }, cb) => {
       nick = String(nick || '').slice(0, 24).trim() || 'Hráč';
-      const room = roomManager.createRoom(nick);
+      const room = roomManager.createRoom(nick, targetPlayers);
       const player = room.addPlayer(nick);
       player.socketId = socket.id;
       socket.data.roomCode = room.code;
       socket.data.playerId = player.id;
       socket.join(room.code);
-      cb && cb({ ok: true, code: room.code, playerId: player.id, token: player.token });
+      cb && cb({ ok: true, code: room.code, playerId: player.id, token: player.token, targetPlayers: room.targetPlayers });
       broadcast(io, room);
     });
 
@@ -68,7 +69,7 @@ function attachSocketHandlers(io, roomManager) {
       const room = roomManager.getRoom(code);
       if (!room) return cb && cb({ ok: false, error: 'ROOM_NOT_FOUND' });
       if (room.game) return cb && cb({ ok: false, error: 'GAME_ALREADY_STARTED' });
-      if (room.players.length >= 6) return cb && cb({ ok: false, error: 'ROOM_FULL' });
+      if (room.isFull()) return cb && cb({ ok: false, error: 'ROOM_FULL' });
       nick = String(nick || '').slice(0, 24).trim() || 'Hráč';
       const player = room.addPlayer(nick);
       player.socketId = socket.id;
@@ -99,7 +100,7 @@ function attachSocketHandlers(io, roomManager) {
       if (room.players[0] && room.players[0].id !== socket.data.playerId) {
         return cb && cb({ ok: false, error: 'ONLY_HOST_CAN_START' });
       }
-      if (!room.canStart()) return cb && cb({ ok: false, error: 'NEED_3_TO_6_PLAYERS' });
+      if (!room.canStart()) return cb && cb({ ok: false, error: 'NOT_AT_TARGET_PLAYER_COUNT' });
       room.start();
       ensureRoomTicking(room);
       cb && cb({ ok: true });
